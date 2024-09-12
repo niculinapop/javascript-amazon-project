@@ -10,8 +10,12 @@ hello();
 
 const today = dayjs();
 const deliveryDate = today.add(7, 'days')
-deliveryDate.format('dddd, MMMM D')
+
 console.log(deliveryDate.format('dddd, MMMM D'))
+
+function renderOrderSummary() {
+
+}
 
 let cartSummaryHTML = "";
 
@@ -31,7 +35,7 @@ const deliveryOptionId = cartItem.deliveryOptionId
 
 let deliveryOption;
 
-deliveryOption.forEach((option) => {
+deliveryOptions.forEach((option) => {
   if (option.id === deliveryOptionId) {
     deliveryOption = option;
   }
@@ -101,7 +105,7 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
 
     const priceString = deliveryOption.priceCents === 0
     ? 'FREE'
-    : `$${formatCurrency(deliveryOptions.priceCents)}`;
+    : `$${formatCurrency(deliveryOption.priceCents)}`;
 
 
     const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
